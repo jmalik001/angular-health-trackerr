@@ -1,0 +1,31 @@
+
+<div class= "table-responsive">
+<div class="float-right mb-2 mt-2">
+  <button (click)=  "toggleBodyFat()" class="btn btn-primary">Show BodyFat</button>
+</div>
+
+<table class= "table table-bordered table-sm">
+<thead class="thead-light">
+<tr>
+  <th scope="col">Info</th>
+  <th scope="col" >Date</th>
+  <th scope="col">Weight</th>
+  <th *ngIf= "showBodyFat" scope="col">Body Fat %</th>
+</tr>
+</thead>
+<tbody>
+    <tr *ngFor="let entry of entries">
+      <td> <i class="fas fa-info-circle " [routerLink]="['/entries/'+ entry.id]" >X</i></td>
+        <td scope="row">{{entry.date | date}} </td>
+        <td>{{entry.weight}} kg</td>
+        <td *ngIf="showBodyFat" >{{entry.bodyfat | percent }}</td>  
+      </tr>
+</tbody>
+</table>
+</div>
+
+<div class = "row">
+<div class="col-sm ">
+  <app-new-entry [showBodyFat]="showBodyFat" (create)= "createNewWeightEntry($event)"></app-new-entry>
+</div>
+</div>

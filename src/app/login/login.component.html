@@ -1,0 +1,23 @@
+
+  <div class="card">
+  <div *ngIf='identityService.logedIn' class="card-body">
+   <button (click)= 'logout()' type="button" class="btn btn-primary">Logout</button>
+  </div>
+
+  <div *ngIf='!identityService.logedIn' class="card-header text-left">
+<h5><i class="fas fa-sign-in-alt" ></i>Login</h5>
+  </div>
+  <div class="card-body">
+    <form #loginForm = "ngForm" class="form-inline">
+      <div class="form-group">
+        <label for="User Name"></label>
+        <input [(ngModel)]="identityService.userName" required type="text" name="UserName" id="" class="form-control" placeholder="User Name" >
+      </div>
+
+        <div class="form-group">
+<button (click)="login()" [disabled]= 'loginForm.form.invalid' type="button" class="btn btn-primary form-control ml-3">Validate</button>
+          </div>
+    </form>
+  </div>
+
+</div>
